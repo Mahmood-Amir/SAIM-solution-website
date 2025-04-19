@@ -1,0 +1,203 @@
+<!-- Services -->
+<section id="services" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Our Services</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="/api/placeholder/350/200" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Software Development</h5>
+            <p class="card-text">Custom software solutions tailored to your business needs.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="/api/placeholder/350/200" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">IT Consulting</h5>
+            <p class="card-text">Expert advice to optimize your IT infrastructure.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="/api/placeholder/350/200" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Digital Marketing</h5>
+            <p class="card-text">Grow your digital presence with smart marketing strategies.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Additional Cards -->
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="/api/placeholder/350/200" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">UI/UX Design</h5>
+            <p class="card-text">Crafting intuitive and user-friendly interfaces for your applications.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="/api/placeholder/350/200" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Video Editing</h5>
+            <p class="card-text">Professional video editing services to enhance your content.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <img src="/api/placeholder/350/200" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Mobile Application Development</h5>
+            <p class="card-text">Building high-performance mobile applications for all platforms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Area of Expertise -->
+    <h2 class="text-center mb-4 mt-5">Area of Expertise</h2>
+    <div class="row text-center">
+      <div class="col-md-2">
+        <div class="circle-progress" data-percent="95">
+          <span class="percentage">0%</span>
+        </div>
+        <h5>Custom Software Solutions</h5>
+      </div>
+      <div class="col-md-2">
+        <div class="circle-progress" data-percent="90">
+          <span class="percentage">0%</span>
+        </div>
+        <h5>IT Training and Development</h5>
+      </div>
+      <div class="col-md-2">
+        <div class="circle-progress" data-percent="90">
+          <span class="percentage">0%</span>
+        </div>
+        <h5>Creative and Technical Services</h5>
+      </div>
+      <div class="col-md-2">
+        <div class="circle-progress" data-percent="80">
+          <span class="percentage">0%</span>
+        </div>
+        <h5>Digital Transformation</h5>
+      </div>
+      <div class="col-md-2">
+        <div class="circle-progress" data-percent="95">
+          <span class="percentage">0%</span>
+        </div>
+        <h5>HCM System</h5>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add this style and script to handle circle animations -->
+<style>
+  .circle-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 10px solid #dcdcdc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    overflow: hidden; /* Ensures the animation doesn't overflow */
+  }
+
+  .circle-progress span {
+    font-size: 1.5em;
+    font-weight: bold;
+    z-index: 1; /* Ensures text stays on top */
+  }
+
+  .circle-progress::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    border-radius: 50%;
+    background: conic-gradient(red 0deg, transparent 0deg);
+    transition: background 1.5s ease-in-out;
+  }
+
+  @keyframes numberCount {
+    from {
+      content: "0%";
+    }
+    to {
+      content: attr(data-target);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const circles = document.querySelectorAll('.circle-progress');
+    
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+    
+    // Function to animate circles
+    function animateCircles() {
+      circles.forEach(circle => {
+        if (isInViewport(circle) && !circle.classList.contains('animated')) {
+          circle.classList.add('animated');
+          
+          const percent = parseInt(circle.getAttribute('data-percent'));
+          const percentSpan = circle.querySelector('.percentage');
+          
+          // Animate the circle fill
+          const degrees = percent * 3.6; // Convert percentage to degrees (100% = 360°)
+          let currentDegree = 0;
+          const duration = 1500; // Animation duration in ms
+          const steps = 100; // Number of steps for animation
+          const increment = degrees / steps;
+          const stepTime = duration / steps;
+          
+          const fillAnimation = setInterval(() => {
+            if (currentDegree >= degrees) {
+              clearInterval(fillAnimation);
+            } else {
+              currentDegree += increment;
+              circle.style.setProperty('--degree', `${Math.min(currentDegree, degrees)}deg`);
+              circle.style.background = `conic-gradient(red 0deg, red ${Math.min(currentDegree, degrees)}deg, transparent ${Math.min(currentDegree, degrees)}deg, transparent 360deg)`;
+            }
+          }, stepTime);
+          
+          // Animate the percentage number
+          let currentPercent = 0;
+          const numberAnimation = setInterval(() => {
+            if (currentPercent >= percent) {
+              clearInterval(numberAnimation);
+            } else {
+              currentPercent++;
+              percentSpan.textContent = `${currentPercent}%`;
+            }
+          }, duration / percent);
+        }
+      });
+    }
+    
+    // Run animation when page loads and on scroll
+    animateCircles();
+    window.addEventListener('scroll', animateCircles);
+  });
+</script>

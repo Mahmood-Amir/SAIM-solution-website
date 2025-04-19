@@ -1,0 +1,75 @@
+<!-- Contact -->
+<section id="contact" class="py-5" style="background-color: #f8f9fa;">
+  <div class="container">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <p class="text-center mb-5">We would love to hear from you! Fill in the form below and we'll get back to you as soon as possible.</p>
+
+    <!-- Contact Form -->
+    <form action="mailto:mahmoodamir508@gmail.com" method="POST" enctype="text/plain">
+      <!-- Name Input -->
+      <div class="col-md-6 mb-3">
+        <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+      </div>
+
+      <!-- Email Input -->
+      <div class="col-md-6 mb-3">
+        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+      </div>
+
+      <!-- Message Textarea -->
+      <div class="col-12 mb-3">
+        <textarea name="message" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </div>
+    </form>
+
+    <!-- Success Message (Optional) -->
+    <div id="thank-you-message" class="mt-4 text-center" style="display: none;">
+      <h4>Thank you for contacting us!</h4>
+      <p>Your message has been successfully sent. We'll get back to you shortly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Optional Styling to improve appearance -->
+<style>
+  /* Enhancing the contact section */
+  #contact {
+    background-color: #f8f9fa;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .form-control {
+    border-radius: 0.5rem;
+    border-color: #ced4da;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+
+  #thank-you-message {
+    font-size: 1.2rem;
+    color: #28a745;
+  }
+
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    #contact {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+</style>

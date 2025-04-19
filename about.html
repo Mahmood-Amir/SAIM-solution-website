@@ -1,0 +1,224 @@
+
+
+
+
+
+
+
+
+<!-- Blog Section -->
+<section id="blog" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">About Us</h2>
+    
+    <div class="blog-slider">
+      <div class="row">
+        <!-- Blog Card 1 -->
+        <div class="col-md-6 mb-4">
+          <div class="card blog-card h-100">
+            <div class="row g-0">
+              <div class="col-md-5">
+                <img src="/api/placeholder/400/500" alt="Blog post image" class="img-fluid h-100 blog-image">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <h3 class="card-title">Focus on Performance Optimization</h3>
+                  <p class="card-text">Website speed and performance are essential for SEO and user experience. Tools like Lighthouse, PageSpeed Insights, and Web Vitals can help you analyze and optimize the performance of your site.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Blog Card 2 -->
+        <div class="col-md-6 mb-4">
+          <div class="card blog-card h-100">
+            <div class="row g-0">
+              <div class="col-md-5">
+                <img src="/api/placeholder/400/500" alt="Blog post image" class="img-fluid h-100 blog-image">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <h3 class="card-title">Master CSS Grid and Flexbox</h3>
+                  <p class="card-text">Gone are the days of complex floats and clearfix hacks. CSS Grid and Flexbox provide developers with more flexibility and control over page layouts. If you haven't already, invest time in mastering these two CSS layout techniques</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Blog Card 3 -->
+        <div class="col-md-6 mb-4">
+          <div class="card blog-card h-100">
+            <div class="row g-0">
+              <div class="col-md-5">
+                <img src="/api/placeholder/400/500" alt="Blog post image" class="img-fluid h-100 blog-image">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <h3 class="card-title">Modern JavaScript Frameworks</h3>
+                  <p class="card-text">The JavaScript ecosystem continues to evolve with frameworks like React, Vue, and Angular. These powerful tools help developers build dynamic, responsive, and maintainable web applications with improved user experiences.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Blog Card 4 -->
+        <div class="col-md-6 mb-4">
+          <div class="card blog-card h-100">
+            <div class="row g-0">
+              <div class="col-md-5">
+                <img src="/api/placeholder/400/500" alt="Blog post image" class="img-fluid h-100 blog-image">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <h3 class="card-title">Responsive Design Best Practices</h3>
+                  <p class="card-text">With the increasing variety of devices and screen sizes, responsive design remains crucial. Learn about mobile-first design, responsive images, and how to create layouts that adapt seamlessly to any screen.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Navigation Buttons -->
+      <div class="text-center mt-4">
+        <button class="btn btn-outline-secondary rounded-circle slider-nav prev-btn me-2" id="prevBtn">
+          <span>&lt;</span>
+        </button>
+        <button class="btn btn-outline-secondary rounded-circle slider-nav next-btn" id="nextBtn">
+          <span>&gt;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Add CSS for Blog Section -->
+<style>
+  .blog-card {
+    border: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .blog-image {
+    object-fit: cover;
+  }
+  
+  h3.card-title {
+    color: #333;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-text {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .slider-nav {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    color: #999;
+    transition: all 0.3s ease;
+  }
+  
+  .slider-nav:hover {
+    background-color: #f8f9fa;
+    border-color: #999;
+    color: #333;
+  }
+  
+  @media (max-width: 767px) {
+    .blog-card .row {
+      flex-direction: column;
+    }
+    
+    .blog-card .col-md-5 {
+      height: 200px;
+    }
+  }
+</style>
+
+<!-- JavaScript for Blog Slider -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const blogCards = document.querySelectorAll('.blog-card');
+    const cardsPerPage = 2;
+    let currentPage = 0;
+    const totalPages = Math.ceil(blogCards.length / cardsPerPage);
+    
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    // Initialize slider
+    updateSlider();
+    
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updateSlider();
+      }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < totalPages - 1) {
+        currentPage++;
+        updateSlider();
+      }
+    });
+    
+    // Update slider function
+    function updateSlider() {
+      blogCards.forEach((card, index) => {
+        const startIndex = currentPage * cardsPerPage;
+        const endIndex = startIndex + cardsPerPage - 1;
+        
+        if (index >= startIndex && index <= endIndex) {
+          card.closest('.col-md-6').style.display = 'block';
+          // Add animation
+          card.style.animation = 'fadeIn 0.5s ease forwards';
+        } else {
+          card.closest('.col-md-6').style.display = 'none';
+        }
+      });
+      
+      // Update button states
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === totalPages - 1;
+      
+      // Add fade animation style if not already added
+      if (!document.getElementById('sliderAnimation')) {
+        const styleSheet = document.createElement('style');
+        styleSheet.id = 'sliderAnimation';
+        styleSheet.innerHTML = `
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateX(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
+        `;
+        document.head.appendChild(styleSheet);
+      }
+    }
+  });
+</script>
